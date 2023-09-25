@@ -1,6 +1,6 @@
 //problem link: https://leetcode.com/problems/perform-string-shifts/description/
 
-optimization:
+//optimization:
 class Solution {
 public:
 
