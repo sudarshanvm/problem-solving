@@ -1,7 +1,31 @@
 //problem : https://leetcode.com/problems/find-smallest-common-element-in-all-rows/
 
-//optimization: 
-//problem : https://leetcode.com/problems/find-smallest-common-element-in-all-rows/
+//optimization2: using binary search
+
+class Solution {
+public:
+    int smallestCommonElement(vector<vector<int>>& mat) {
+        
+        for(int j=0;j<mat[0].size();j++)
+        {
+            int ele = mat[0][j];
+            bool found = true;
+            for(int i=1; i<mat.size();i++)
+            {   
+                found = binary_search(begin(mat[i]),end(mat[i]),ele);
+                if(!found)
+                    break;
+            }
+            if(found)
+                return ele;
+        }
+
+        return -1;
+    }
+};
+
+-------------------------------------------------------------------------
+//optimization1: 
 
 class Solution {
 public:
