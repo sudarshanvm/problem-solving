@@ -1,5 +1,37 @@
 //problem: https://leetcode.com/problems/find-the-celebrity/description/?envType=study-plan-v2&envId=premium-algo-100
+/* The knows API is defined for you.
+      bool knows(int a, int b); */
 
+class Solution {
+public:
+
+    bool isceleb(int i, int n)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(i==j)
+                continue;
+            if(knows(i,j) || !knows(j,i))
+                return false;
+        }
+        return true;
+    }
+
+    int findCelebrity(int n) {
+        int candidate = 0;
+        for(int i=1;i<n;i++)
+        {
+            if(knows(candidate,i))
+                candidate = i;
+        }
+
+        if(isceleb(candidate,n))
+            return candidate;
+
+        return -1;
+
+    }
+};
 
 //----------------------------------------------------------
 //TLE
