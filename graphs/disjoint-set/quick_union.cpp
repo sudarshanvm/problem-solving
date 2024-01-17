@@ -17,7 +17,9 @@ class UnionFind
 
         int find(int x)
         {
-            return root[x];
+            if(x==root[x])
+                return root[x];
+            return find(root[x]);
         }
 
         bool connected(int x, int y)
@@ -32,11 +34,7 @@ class UnionFind
 
             if(rootx != rooty)
             {
-                for(int i=0; i<root.size(); i++)
-                {
-                    if(root[i] == rooty)
-                        root[i] = rootx;
-                }
+                root[rooty] = rootx;
             }
         }
 
