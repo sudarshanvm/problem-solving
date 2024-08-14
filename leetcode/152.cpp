@@ -1,3 +1,36 @@
+//problem: https://leetcode.com/problems/maximum-product-subarray/
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int left=0, right=1, n=nums.size();
+
+        if(nums.size()==0)
+            return 0;
+
+        double res=nums[0], resmin=nums[0],resmax = nums[0];
+
+        while(right<n)
+        {
+            double cur = nums[right];
+            double prod1 = (double) resmax * cur;
+            double prod2 = (double) resmin * cur;
+            resmax = max(cur, max(prod1, prod2));
+            resmin = min(cur, min(prod1, prod2));
+
+            res = max(res, resmax);
+            right++;
+        }
+
+        return res;
+    }
+};
+
+
+
+
+//--------
+
+
 //https://leetcode.com/problems/maximum-product-subarray/
 class Solution {
 public:
